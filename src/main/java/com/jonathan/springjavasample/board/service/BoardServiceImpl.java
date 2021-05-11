@@ -19,8 +19,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void insertPost(PostDto board) throws Exception {
-        mapper.insertPost(board);
+    public void insertPost(PostDto post) throws Exception {
+        mapper.insertPost(post);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void updatePost(PostDto board) throws Exception {
-        mapper.updatePost(board);
+    public void updatePost(PostDto post) throws Exception {
+        mapper.updatePost(post);
     }
 
     @Override

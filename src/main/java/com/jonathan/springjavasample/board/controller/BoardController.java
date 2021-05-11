@@ -31,7 +31,7 @@ public class BoardController {
 
     @RequestMapping("/board/insertPost.do")
     public String insertPost(PostDto post) throws Exception{
-        boardService.insertPost(post  );
+        boardService.insertPost(post);
         return "redirect:/board/openPostList.do";
     }
 
