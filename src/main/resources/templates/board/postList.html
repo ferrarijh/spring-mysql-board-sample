@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>board</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <h2>게시글 목록</h2>
+    <table class="post_list">
+        <colgroup>
+            <col width="15%"/>
+            <col width="*"/>
+            <col width="15%"/>
+            <col width="20%"/>
+        </colgroup>
+        <thead>
+        <tr>
+            <th scope="col">글번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">조회수</th>
+            <th scope="col">작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.size(list)} > 0" th:each="post : ${list}">
+            <td th:text="${post.postIdx}"></td>
+            <td class="title"><a href="/board/openPostDetail.do?postIdx="
+                                 th:attrappend="href=${post.postIdx}"
+                                 th:text="${post.title}"></a></td>
+            <td th:text="${post.hitCnt}"></td>
+<!--            dates object from Thymeleaf does not support java 8 date related classes like LocalDateTime -->
+<!--            <td th:text="${list.createdDatetime}"></td>-->
+            <td th:text="${#temporals.format(post.datetimeCreated, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+        <tr th:unless="${#lists.size(list)} > 0">
+            <td colspan="4">조회된 결과가 없습니다.</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/board/openPostWrite.do" class="btn">글 쓰기</a>
+</div>
+</body>
+</html>

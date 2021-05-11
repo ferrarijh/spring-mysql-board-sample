@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jonathan.springjavasample.board.mapper.BoardMyBatisMapper">
+    <select id="selectPostList" resultType="com.jonathan.springjavasample.board.model.PostDto">
+        <![CDATA[
+			SELECT
+				post_idx,
+				title,
+				hit_cnt,
+				DATE_FORMAT(datetime_created, '%Y-%m-%d %H:%i:%s') AS datetime_created
+			FROM
+				t_board
+			WHERE
+				deleted_yn = 'N'
+			ORDER BY post_idx DESC
+		]]>
+    </select>
+
+    <insert id="insertPost" parameterType="com.jonathan.springjavasample.board.model.PostDto" useGeneratedKeys="true" keyProperty="postIdx">
+        <![CDATA[
+			INSERT INTO t_board
+			(
+				title,
+				contents,
+				datetime_created,
+				creator_id
+			)
+			VALUES
+			(
+				#{title},
+				#{contents},
+				NOW(),
+				'admin'
+			)
+		]]>
+    </insert>
+
+    <select id="selectPostDetail" parameterType="int" resultType="com.jonathan.springjavasample.board.model.PostDto">
+        <![CDATA[
+			SELECT
+				post_idx,
+				title,
+				contents,
+				hit_cnt,
+				DATE_FORMAT(datetime_created, '%Y-%m-%d %H:%i:%s') AS datetime_created,
+				creator_id
+			FROM
+				t_board
+			WHERE
+			    post_idx = #{postIdx}
+				AND deleted_yn = 'N'
+		]]>
+    </select>
+
+    <update id="updateHitCount" parameterType="int">
+        <![CDATA[
+			UPDATE
+				t_board
+			SET
+				hit_cnt = hit_cnt + 1
+			WHERE
+				post_idx = #{postIdx}
+		]]>
+    </update>
+
+    <update id="updatePost" parameterType="com.jonathan.springjavasample.board.model.PostDto">
+        <![CDATA[
+			UPDATE t_board SET
+				title = #{title},
+				contents = #{contents},
+				datetime_updated = Now(),
+				updater_id = 'admin'
+			WHERE
+				post_idx = #{postIdx}
+		]]>
+    </update>
+
+    <update id="deletePost" parameterType="int">
+        <![CDATA[
+			UPDATE t_board SET
+				deleted_yn = 'Y',
+				datetime_updated = Now(),
+				updater_id = 'admin'
+			WHERE
+				post_idx = #{postIdx}
+		]]>
+    </update>
+</mapper>
