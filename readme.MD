@@ -1,3 +1,6 @@
+# Online board sample with spring boot
+Sample spring boot mvc application showcasing online board.
+
 ### Connecting to db
 Two ways to handling data source:
 1) configure `application.properties`
