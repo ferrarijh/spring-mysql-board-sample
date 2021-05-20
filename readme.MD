@@ -1,6 +1,16 @@
 # Online board sample with spring boot
 Sample spring boot mvc application showcasing online board.
 
+## Demo
+<div>
+  <img src="https://github.com/ferrarijh/spring-mysql-board-sample/blob/master/demo/demo.gif">
+</div>
+
+## Project Structure
+<div>
+  <img src="https://github.com/ferrarijh/spring-mysql-board-sample/blob/master/demo/project_structure.png">
+</div>
+
 ### Connecting to db
 Two ways to handling data source:
 1) configure `application.properties`
