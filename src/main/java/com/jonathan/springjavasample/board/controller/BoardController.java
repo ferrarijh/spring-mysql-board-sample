@@ -50,4 +50,10 @@ public class BoardController {
         boardService.deletePost(postIdx);
         return "redirect:/board/openPostList.do";
     }
+
+    @RequestMapping("/board/updatePost.do")
+    public String updatePost(PostDto post) throws Exception{
+        boardService.updatePost(post);
+        return "redirect:/board/openPostList.do";
+    }
 }
