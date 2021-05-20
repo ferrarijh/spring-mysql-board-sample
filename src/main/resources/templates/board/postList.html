@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>게시글 목록</h2>
+    <h2>Board</h2>
     <table class="post_list">
         <colgroup>
             <col width="15%"/>
@@ -17,10 +17,10 @@
         </colgroup>
         <thead>
         <tr>
-            <th scope="col">글번호</th>
-            <th scope="col">제목</th>
-            <th scope="col">조회수</th>
-            <th scope="col">작성일</th>
+            <th scope="col">Post no.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Views</th>
+            <th scope="col">Last Update</th>
         </tr>
         </thead>
         <tbody>
@@ -35,11 +35,11 @@
             <td th:text="${#temporals.format(post.datetimeCreated, 'yyyy-MM-dd HH:mm:ss')}"></td>
         </tr>
         <tr th:unless="${#lists.size(list)} > 0">
-            <td colspan="4">조회된 결과가 없습니다.</td>
+            <td colspan="4">No posts available.</td>
         </tr>
         </tbody>
     </table>
-    <a href="/board/openPostWrite.do" class="btn">글 쓰기</a>
+    <a href="/board/openPostWrite.do" class="btn">Write Post</a>
 </div>
 </body>
 </html>

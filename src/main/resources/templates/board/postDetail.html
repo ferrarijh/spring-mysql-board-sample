@@ -2,12 +2,12 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>게시글 상세 화면</title>
+    <title>Post detail</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div class="container">
-    <h2>게시글 상세 화면</h2>
+    <h2>Post detail</h2>
     <form id="frm" method="post">
         <table class="post_detail">
             <colgroup>
@@ -16,27 +16,27 @@
                 <col width="15%"/>
                 <col width="35%"/>
             </colgroup>
-            <caption>게시글 상세내용</caption>
+            <caption>Post detail</caption>
             <tbody>
             <tr>
-                <th scope="row">글 번호</th>
+                <th scope="row">Post no.</th>
                 <td th:text="${post.postIdx}"></td>
-                <th scope="row">조회수</th>
+                <th scope="row">Views</th>
                 <td th:text="${post.hitCnt }"></td>
             </tr>
             <tr>
-                <th scope="row">작성자</th>
+                <th scope="row">Writer</th>
                 <td th:text="${post.creatorId }"></td>
-                <th scope="row">작성일</th>
+                <th scope="row">Last update</th>
                 <td th:text="${post.datetimeCreated }"></td>
             </tr>
             <tr>
-                <th scope="row">제목</th>
+                <th scope="row">Title</th>
                 <td colspan="3"><input type="text" id="title" name="title" th:value="${post.title }"/></td>
             </tr>
             <tr>
                 <td colspan="4" class="view_text">
-                    <textarea title="내용" id="contents" name="contents" th:text="${post.contents }"></textarea>
+                    <textarea title="Content" id="contents" name="contents" th:text="${post.contents }"></textarea>
                 </td>
             </tr>
             </tbody>
@@ -44,9 +44,9 @@
         <input type="hidden" id="postIdx" name="postIdx" th:value="${post.postIdx }"/>
     </form>
 
-    <a href="#this" id="list" class="btn">목록으로</a>
-    <a href="#this" id="edit" class="btn">수정하기</a>
-    <a href="/board/deletePost.do?postIdx=" id="delete" class="btn" th:attrappend="href=${post.postIdx}">삭제하기</a>
+    <a href="#this" id="list" class="btn">To board</a>
+    <a href="#this" id="edit" class="btn">Update</a>
+    <a href="/board/deletePost.do?postIdx=" id="delete" class="btn" th:attrappend="href=${post.postIdx}">Delete</a>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

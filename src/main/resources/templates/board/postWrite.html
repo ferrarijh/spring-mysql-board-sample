@@ -7,12 +7,12 @@
 </head>
 <body>
 <div class="container">
-    <h2>게시글 등록</h2>
+    <h2>Write Post</h2>
     <form id="frm" name="frm" method="post" action="/board/insertPost.do">
         <table class="post_detail">
             <tr>
-                <td>제목</td>
-                <td><input type="text" id="title" name="title"/></td>
+                <td>Title</td>
+                <td><input type="text" id="title" name="title" autocomplete="off"/></td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -20,7 +20,7 @@
                 </td>
             </tr>
         </table>
-        <input type="submit" id="submit" value="저장" class="btn">
+        <input type="submit" id="submit" value="Save" class="btn">
     </form>
 </div>
 </body>
