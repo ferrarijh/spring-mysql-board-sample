@@ -44,4 +44,10 @@ public class BoardController {
 
         return mv;
     }
+
+    @RequestMapping("/board/deletePost.do")
+    public String deletePost(@RequestParam int postIdx) throws Exception{
+        boardService.deletePost(postIdx);
+        return "redirect:/board/openPostList.do";
+    }
 }

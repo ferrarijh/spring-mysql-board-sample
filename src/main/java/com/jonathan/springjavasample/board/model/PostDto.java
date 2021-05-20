@@ -15,7 +15,7 @@ public class PostDto {
     private String creatorId;
     private LocalDateTime datetimeUpdated;
     private String updaterId;
-//    private String deletedYn;
+    private String deletedYn;
 }
 
 /*
